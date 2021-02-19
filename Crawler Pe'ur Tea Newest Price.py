@@ -18,7 +18,7 @@ def TAE_now_tea_price(): #TAE has divied several different categories, 'now' mea
         evaluation = tea.find("span", "dh7").text.strip().replace('\n|', '') # sometimes, we won't find any mistake on any column, dont forget to test each column.  
         result.append((name, price, up, down, date, evaluation))  #here we have to put all columns in one result[]
     now_tea_df = pd.DataFrame(result, columns=['產品名', '參考價', '升跌幅度', '升降百分比', '更新日期', '評分']) #if we dont set up columns, we won't see any column.
-    return now_tea_df
+    return now_tea_df                          #this part, if you want to change these chinese words to English or any language, you can directly change them:))
 
 def TAE_New_tea_price(): # 'New' means between 5 to 15 years 
     url = 'https://donghetea.com/fanti/quotes.php?id=6'
