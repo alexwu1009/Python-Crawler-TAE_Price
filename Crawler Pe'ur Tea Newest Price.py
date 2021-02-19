@@ -10,12 +10,12 @@ def TAE_now_tea_price(): #TAE has divied several different categories, 'now' mea
     teas = soup.find_all('li', 'quotes_list')
     result = []
     for tea in teas:  # make a For to get each information
-        name = tea.find("span", "dh1").text.strip()
-        price = tea.find("span", "dh2").text.strip()
+        name = tea.find("span", "dh1").text.strip() #return on the inspector, we can find where the name is or where the price is. 
+        price = tea.find("span", "dh2").text.strip() 
         up = tea.find("span", "dh3").text.strip()
         down = tea.find("span", "dh4").text.strip()
         date = tea.find("span", "dh6").text.strip()
-        evaluation = tea.find("span", "dh7").text.strip().replace('\n|', '')
+        evaluation = tea.find("span", "dh7").text.strip().replace('\n|', '') # sometimes, we won't find any mistake on any column, dont forget to test each column.  
         result.append((name, price, up, down, date, evaluation))  #here we have to put all columns in one result[]
     now_tea_df = pd.DataFrame(result, columns=['產品名', '參考價', '升跌幅度', '升降百分比', '更新日期', '評分']) #if we dont set up columns, we won't see any column.
     return now_tea_df
